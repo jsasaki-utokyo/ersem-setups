@@ -8,6 +8,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 from matplotlib.gridspec import GridSpec
 from mpl_toolkits.axes_grid1 import make_axes_locatable
+from ersem_mixin import ErsemMixin
 
 def update_datetime_in_file(input_file, start_time, end_time, freq, output_file):
     """
@@ -79,7 +80,7 @@ def set_size(w, h, ax=None):
     fig_height = h / plot_height
     ax.figure.set_size_inches(fig_width, fig_height)
 
-class GotmErsem:
+class GotmErsem(ErsemMixin):
     """
     Read GOTM-ERSEM output netddf into xarray.Dataset.
     """
@@ -137,7 +138,7 @@ class GotmErsemConfig:
         self.linewidth = linewidth
         self.rotation = rotation
 
-class GotmErsemData:
+class GotmErsemData(ErsemMixin):
     """
     GOTM-ERSEM varname data.
     """
